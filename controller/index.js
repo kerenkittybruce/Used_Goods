@@ -3,6 +3,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const route = express.Router();
 const { User, Product } = require("../model");
 
