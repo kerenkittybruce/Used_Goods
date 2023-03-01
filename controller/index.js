@@ -34,6 +34,12 @@ route.get("/users", (req, res) => {
   user.fetchUsers(req, res);
 });
 
+// To retrive a single user
+
+route.get("/users/:UserID", (req, res) => {
+  user.fetchUser(req, res);
+});
+
 // To update
 
 route.put("/users/:UserID", bodyParser.json(), (req, res) => {
