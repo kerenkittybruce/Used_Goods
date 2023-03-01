@@ -16,11 +16,11 @@ class User {
   // Login
 
   login(req, res) {
-    const { Email, Password } = req.body;
+    const { emailAdd, userPass } = req.body;
     const strQry = `
-        SELECT UserName, Email, Password, UserRole, UserProfile
-        FROM users
-        WHERE Email = '${Email}';
+        SELECT firstName, lastName, gender, cellphoneNumber, emailAdd, userPass, userRole, userProfile, joinDate
+        FROM Users
+        WHERE emailAdd = '${emailAdd}';
         `;
 
     db.query(strQry, async (err, data) => {
@@ -28,14 +28,14 @@ class User {
       if (!data.length || data == null) {
         res.status(401).json({ err: "You provided an invalid email address." });
       } else {
-        await compare(Password, data[0].Password, (cErr, cResult) => {
+        await compare(userPass, data[0].userPass, (cErr, cResult) => {
           if (cErr) throw cErr;
 
           // Token creation
 
           const jwToken = createToken({
-            Email,
-            Password,
+            emailAdd,
+            userPass,
           });
 
           // Saving
@@ -64,8 +64,8 @@ class User {
 
   fetchUsers(req, res) {
     const strQry = `
-    SELECT UserID, UserName, Email, Password, UserRole, UserProfile
-    FROM users;
+    SELECT userID, firstName, lastName, gender, cellphoneNumber, emailAdd, userRole, userProfile, joinDate
+    FROM Users;
     `;
 
     db.query(strQry, (err, data) => {
@@ -78,9 +78,9 @@ class User {
 
   fetchUser(req, res) {
     const strQry = `
-    SELECT UserID, UserName, Email, Password, UserRole, UserProfile
-    FROM users
-    WHERE UserID = ?;
+    SELECT userID, firstName, lastName, gender, cellphoneNumber, emailAdd, userRole, userProfile, joinDate
+    FROM Users
+    WHERE userID = ?;
     `;
 
     db.query(strQry, [req.params.id], (err, data) => {
@@ -95,17 +95,17 @@ class User {
     // Payload and hashing user password
 
     let detail = req.body;
-    detail.Password = await hash(detail.Password, 15);
+    detail.userPass = await hash(detail.userPass, 15);
 
     // Authentication Information
 
     let user = {
-      Email: detail.Email,
-      Password: detail.Password,
+      emailAdd: detail.emailAdd,
+      userPass: detail.userPass,
     };
 
     const strQry = `
-        INSERT INTO users
+        INSERT INTO Users
         SET ?;
         `;
 
@@ -129,12 +129,12 @@ class User {
 
   updateUser(req, res) {
     let data = req.body;
-    if (data.Password !== null || data.Password !== undefined)
-      data.Password = hashSync(data.Password, 15);
+    if (data.userPass !== null || data.userPass !== undefined)
+      data.userPass = hashSync(data.userPass, 15);
     const strQry = `
-    UPDATE users
+    UPDATE Users
     SET ?
-    WHERE UserID = ?;
+    WHERE userID = ?;
     `;
 
     db.query(strQry, [data, req.params.id], (err) => {
@@ -149,8 +149,8 @@ class User {
 
   deleteUser(req, res) {
     const strQry = `
-    DELETE FROM users
-    WHERE UserID = ?;
+    DELETE FROM Users
+    WHERE userID = ?;
     `;
 
     db.query(strQry, [req.params.id], (err) => {
@@ -168,8 +168,8 @@ class Product {
   // To fetch all products
   fetchProducts(req, res) {
     const strQry = `
-        SELECT id, ProductName, Description, Category, Price, Quantity, ImgURL
-        FROM products;
+        SELECT id, prodName, prodDescription, category, price, prodQuantity, imgURL
+        FROM Products;
         `;
 
     db.query(strQry, (err, results) => {
@@ -182,8 +182,8 @@ class Product {
 
   fetchProduct(req, res) {
     const strQry = `
-    SELECT id, ProductName, Description, Category, Price, Quantity, ImgURL
-    FROM products
+    SELECT id, prodName, prodDescription, category, price, prodQuantity, imgURL
+    FROM Products
     WHERE id = ?;
     `;
 
@@ -197,7 +197,7 @@ class Product {
 
   addProduct(req, res) {
     const strQry = `
-    INSERT INTO products
+    INSERT INTO Products
     SET ?
     `;
 
@@ -214,7 +214,7 @@ class Product {
 
   updateProduct(req, res) {
     const strQry = `
-    UPDATE products
+    UPDATE Products
     SET ?
     WHERE id = ?;
     `;
@@ -232,7 +232,7 @@ class Product {
 
   deleteProduct(req, res) {
     const strQry = `
-    DELETE FROM products
+    DELETE FROM Products
     WHERE id = ?;
     `;
 

@@ -11,8 +11,8 @@ function createToken(user) {
   return sign(
     // Agree to terms and conditions
     {
-      Email: user.Email,
-      Password: user.Password,
+      emailAdd: user.emailAdd,
+      userPass: user.userPass,
     },
     {
       expiresIn: "1h",
