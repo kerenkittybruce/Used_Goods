@@ -36,7 +36,7 @@ route.get("/users", (req, res) => {
 
 // To update
 
-route.put("/user/:UserID", bodyParser.json(), (req, res) => {
+route.put("/users/:UserID", bodyParser.json(), (req, res) => {
   user.updateUser(req, res);
 });
 
@@ -48,7 +48,7 @@ route.post("/register", bodyParser.json(), (req, res) => {
 
 // To delete
 
-route.delete("/user/:UserID", (req, res) => {
+route.delete("/users/:UserID", (req, res) => {
   user.deleteUser(req, res);
 });
 
@@ -62,25 +62,25 @@ route.get("/products", (req, res) => {
 
 // To fetch a single product
 
-route.get("/product/:ProdID", (req, res) => {
+route.get("/products/:ProdID", (req, res) => {
   product.fetchProduct(req, res);
 });
 
 // To add a new product
 
-route.post("/product", bodyParser.json(), (req, res) => {
+route.post("/products", bodyParser.json(), (req, res) => {
   product.addProduct(req, res);
 });
 
 // To update a product
 
-route.put("/product/:ProdID", bodyParser.json(), (req, res) => {
+route.put("/products/:ProdID", bodyParser.json(), (req, res) => {
   product.updateProduct(req, res);
 });
 
 // To delete a product
 
-route.delete("/product/:ProdID", (req, res) => {
+route.delete("/products/:ProdID", (req, res) => {
   product.deleteProduct(req, res);
 });
 
