@@ -24,7 +24,7 @@ route.get("^/$|/used_goods", (req, res) => {
 
 // To login
 
-route.post("/login", bodyParser.json(), (req, res) => {
+route.post("/users/login", bodyParser.json(), (req, res) => {
   user.login(req, res);
 });
 

@@ -46,7 +46,7 @@ class User {
           });
           if (cResult) {
             res.status(200).json({
-              msg: "User Logged In",
+              msg: "User logged in successfully .",
               jwToken,
               result: data[0],
             });
@@ -85,7 +85,7 @@ class User {
 
     db.query(strQry, [req.params.id], (err, data) => {
       if (err) throw err;
-      else res.status(200).json({ result: data });
+      else res.status(200).json({ result: strQry });
     });
   }
 
