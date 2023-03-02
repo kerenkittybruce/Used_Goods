@@ -34,7 +34,7 @@ route.get("/users", (req, res) => {
   user.fetchUsers(req, res);
 });
 
-// To retrive a single user
+// To retrieve a single user
 
 route.get("/users/:userID", (req, res) => {
   user.fetchUser(req, res);
