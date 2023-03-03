@@ -17,13 +17,11 @@
         background-color: rgb(235, 175, 175);
         border-radius: 2rem;
       }
-
-
     </style>
     <title>Used Goods</title>
   </head>
   <body>
-    <h2>Route Description</h2>
+    <h2>Route Description for Users & Products</h2>
     <div>
       <table>
         <thead style="font-size: 2rem">
@@ -79,7 +77,42 @@
             <td>Removes user from the relevant database .</td>
           </tr>
           <tr>
-            
+            <td>08</td>
+            <td>GET</td>
+            <td>/products</td>
+            <td>Returns an array of all products .</td>
+          </tr>
+          <tr>
+            <td>09</td>
+            <td>GET</td>
+            <td>/products/:id</td>
+            <td>
+              Returns an object of the selected product with matching ID .
+            </td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>POST</td>
+            <td>/products</td>
+            <td>Successfully saves product in relevant database .</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>PUT</td>
+            <td>/products/:id</td>
+            <td>
+              Updates product in relevant database successfully -- only users
+              with admin roles can update products .
+            </td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>DELETE</td>
+            <td>/products/:id</td>
+            <td>
+              Deletes product from relevant database successfully -- only users
+              with admin roles can update products .
+            </td>
           </tr>
         </tbody>
       </table>
