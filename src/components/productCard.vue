@@ -1,5 +1,20 @@
 <template>
     <div class="">
+      <br> <br><br><br><br>
+      <div class="container">
+    <div class="row my-2">
+      <div class="col-md col-4">
+           <button class="form-control btn btn-transparent border-dark sortBtn text-center m-auto d-flex" @click="SortByPrice">Price<i class="bi bi-arrow-down-up"></i></button><br>
+
+      </div>
+      <div class="col-md">
+        
+    <form class="d-flex" role="search">
+        <input class="form-control me-2 bg-transparent border-dark" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-dark bg-transparent Submit" type="submit">Search</button>
+      </form>
+      </div>
+    </div>
        <div v-if="spinner">
        <SpinnerComponent/>
       </div>
@@ -28,6 +43,7 @@
 </div>
     </div>
     </div>
+    </div>
 </template>
 
 <script>
@@ -39,6 +55,11 @@ import SpinnerComponent from "../components/SpinnerComponent.vue"
       components: {
        SpinnerComponent
       },
+      methods: {
+          SortByPrice(){
+            this.$store.commit("SortProductsByPrice");
+          }
+        },
         setup(){
     const store = useStore();
       store.dispatch("fetchProducts");
@@ -60,5 +81,14 @@ import SpinnerComponent from "../components/SpinnerComponent.vue"
 
 .loop {
   display: inline-block;
+}
+
+input::placeholder{
+  color: black;
+}
+
+.Submit:hover {
+  background: linear-gradient(to bottom right, #E6CCB2, #755539, pink);
+
 }
 </style>

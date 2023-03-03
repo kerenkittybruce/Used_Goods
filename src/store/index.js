@@ -9,7 +9,9 @@ export default createStore({
     products: null,
     product: null,
     spinnerStatus: true,
-    message: null
+    message: null,
+    asc: false,
+    LoGIn: false
   },
   getters: {
   spinnerStatus(state) {
@@ -35,16 +37,30 @@ export default createStore({
     },
     spinnerStatus(state, newSpinnerStatus) {
       state.spinnerStatus = newSpinnerStatus
+    },
+    SortProductsByPrice: (state) => {
+      state.products.sort((a, b) => {
+        return a.price - b.price;
+      });
+      if (!state.asc) {
+        state.products.reverse();
+      }
+      state.asc = !state.asc;
     }
   },
   actions: {
     async fetchUsers(context){
+      context.commit('spinnerStatus', true)
+
       const res = await axios.get(`${renderURL}/users`);
       const {results, err} = await res.data;
+
       if(results){
         context.commit('setUsers', results);
+        context.commit('spinnerStatus', false)
       } else {
         context.commit('setMessage', err);
+        context.commit('spinnerStatus', true)
       }
     },
     async fetchProducts(context){
@@ -79,54 +95,8 @@ export default createStore({
       if(res) {
         context.dispatch("fetchUsers");
       }
-    },
-
-  //   async updateUser(context, payload, id) {
-  //     payload;
-  //     const data = {
-  //       fullname, 
-  //       email,
-  //       userpassword,
-  //       userRole,
-  //       phonenumber,
-  //       joinDate
-  //     };
-  //     try{
-  //       let res = await axios.put(`${renderURL}users/${id}`, data);
-  //       let {results}  = await res.data;
-  //       if(results) {
-  //         context.commit('setUsers', results);
-  //         router.push({name: "login"});
-  //       }
-  //     }catch(e) {
-  //       console.lolg(e);    
-  //     }
-  //   },
-   
-
-  //   //Signup
-  //   async signUp(context, payload) {
-  //     payload;
-  //     const data = {
-  //       fullname, 
-  //       email,
-  //       userpassword,
-  //       userRole,
-  //       phonenumber,
-  //       joinDate
-  //     };
-  //     try{
-  //       let res = await axios.post(jtlaptopsURL+"users", data);
-  //       let {results}  = await res.data;
-  //       if(results) {
-  //         context.commit('setUsers', results);
-  //         router.push({name: "login"});
-  //       }
-  //     }catch(e) {
-  //       console.lolg(e);    
-  //     }
-  //   }
-  // },
-  // modules: {
+    }
+  },
+  modules: {
   }
 })

@@ -3,24 +3,25 @@
       <div v-if="spinner">
          <SpinnerComponent/>      
       </div>
-        <div v-else class="container text-center">
+        <div v-else class="container text-center"> <br> <br> <br> <br> <br>
           <div class="row">
             <div class="col">
               <img :src="product.imgURL" alt="">
             </div>
-            <div class="col">
-              <h2>{{ product.prodName }}</h2>
-              <h5>{{ product.price }}</h5>
+            <div class="col pt-5">
+              <h2 class="text-white" >{{ product.prodName }}</h2>
+              <h5 class="text-white" >{{ product.price }}</h5>
               <br><br>
-              {{ product.prodDescription }}
+               <h5 class="text-white" >{{ product.prodDescription }}</h5>
               ---------------------------------
-              <h5>{{ product.category }}</h5>
+              <h5 class= "text-white">{{ product.category }}</h5>
               ---------------------------------
             </div>
-            <router-link to="/products"><a class="btn btn-transparent text-light border-dark">Explore</a></router-link>
 
           </div>
         </div>
+        <router-link to="/products"><a class="btn btn-transparent text-light border-dark mt-5 text-dark fw-bold">Go Back</a></router-link>
+
     </div>
 </template>
 
@@ -56,6 +57,18 @@ import SpinnerComponent from "../components/SpinnerComponent.vue"
 <style scoped>
 .main_div {
   width: 100%;
-  height: 100vh;
+  height: 150vh;
+  background: linear-gradient(to right,  white, #E6CCB2, #755539, pink);
 }
+
+img {
+  width: 80%;
+  height: 80vh;
+}
+
+a {
+  margin-left: 85px;
+
+}
+
 </style>

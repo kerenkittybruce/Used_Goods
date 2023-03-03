@@ -18,7 +18,7 @@ import productCard from "../components/productCard.vue"
 
 .main_div {
     width: 100%;
-    height: 340vh;
+    height: 550vh;
     background: linear-gradient(to right, white, #E6CCB2, #755539, pink);
 }
 

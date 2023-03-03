@@ -9,11 +9,10 @@
 <div class="d-flex justify-content-between">
    <div class="position-absolute top-50 start-50">
     <div >
-        <h1><i>Used Goods</i></h1>
+        <h1 class="text-white"><i>Used Goods</i></h1>
     </div>
-   <div>
-        <p>Like Yourself...</p>
-        <p>A collection of high-end second hand goods. Including a first time customer discount. </p>
+   <div class="text-wrap">
+        <p class="text-light">Used Goods is an Online <i> Second Hand Store</i> that allows customers to purchase clothing <br> of their desire, at a low price. </p>
    </div>
      
    <router-link to="/products"><a class="btn btn-transparent text-light border-dark">Explore</a></router-link>
