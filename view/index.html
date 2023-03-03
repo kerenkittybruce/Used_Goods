@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      body {
+        background: linear-gradient(to right, white, #e6ccb2, #755539, pink);
+      }
+
       div {
         width: 80%;
         display: block;
@@ -13,14 +17,38 @@
       }
 
       table {
-        padding: 2%;
+        border-collapse: collapse;
+        padding: 2.5%;
         background-color: rgb(235, 175, 175);
-        border-radius: 2rem;
+        border: 3px solid black;
       }
 
-      h2{
+      table td,
+      table th {
+        border: 1.6px solid black;
+        padding: 6px;
+      }
+
+      table th {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+        background-color: black;
+        color: rgb(235, 175, 175);
+      }
+
+      table tr:hover {
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        background-color: rgba(235, 175, 175, 0.7);
         text-align: center;
         font-size: 3rem;
+      }
+
+      thead {
+        border-bottom: 1.5px solid black;
       }
     </style>
     <title>Used Goods | Routes</title>
@@ -45,7 +73,7 @@
           <tr>
             <td>02</td>
             <td>POST</td>
-            <td>/users/login</td>
+            <td>/login</td>
             <td>Allows users to log into their account .</td>
           </tr>
           <tr>
@@ -57,13 +85,13 @@
           <tr>
             <td>04</td>
             <td>GET</td>
-            <td>/users/:userID</td>
+            <td>/users/:id</td>
             <td>Returns an object of the user with matching ID .</td>
           </tr>
           <tr>
             <td>05</td>
             <td>PUT</td>
-            <td>/users/:userID</td>
+            <td>/users/:id</td>
             <td>Updates details of the user with the matching ID .</td>
           </tr>
           <tr>
@@ -78,7 +106,7 @@
           <tr>
             <td>07</td>
             <td>DELETE</td>
-            <td>/users/:userID</td>
+            <td>/users/:id</td>
             <td>Removes user from the relevant database .</td>
           </tr>
           <tr>
