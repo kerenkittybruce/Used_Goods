@@ -24,7 +24,7 @@ route.get("^/$|/used_goods", (req, res) => {
 
 // To login
 
-route.post("/users/login", bodyParser.json(), (req, res) => {
+route.post("/login", bodyParser.json(), (req, res) => {
   user.login(req, res);
 });
 
@@ -36,13 +36,13 @@ route.get("/users", (req, res) => {
 
 // To retrieve a single user
 
-route.get("/users/:userID", (req, res) => {
+route.get("/users/:id", (req, res) => {
   user.fetchUser(req, res);
 });
 
 // To update
 
-route.put("/users/:userID", bodyParser.json(), (req, res) => {
+route.put("/users/:id", bodyParser.json(), (req, res) => {
   user.updateUser(req, res);
 });
 
@@ -54,7 +54,7 @@ route.post("/register", bodyParser.json(), (req, res) => {
 
 // To delete
 
-route.delete("/users/:userID", (req, res) => {
+route.delete("/users/:id", (req, res) => {
   user.deleteUser(req, res);
 });
 

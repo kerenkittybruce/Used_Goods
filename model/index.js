@@ -114,6 +114,7 @@ class User {
         res.status(401).json({ err });
       } else {
         // Token creation ---- to be saved in "cookie"
+        // Duration is measured in milliseconds
 
         const jwToken = createToken(user);
         res.cookie("LegitUser", jwToken, {
