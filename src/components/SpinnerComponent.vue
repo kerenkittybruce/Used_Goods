@@ -38,7 +38,6 @@ export default {
 }
 .lds-spinner div:after {
   content: " ";
-  /* display: block; */
   position: absolute;
   top: 3px;
   left: 37px;

@@ -7,15 +7,17 @@
     <div class="main_container mb-5">
 
 <div class="d-flex justify-content-between">
-   <div class="div1" data-aos="fade-right" data-aos-duration="3000">
+   <div class="position-absolute top-50 start-50">
     <div >
         <h1><i>Used Goods</i></h1>
     </div>
    <div>
         <p>Like Yourself...</p>
+        <p>A collection of high-end second hand goods. Including a first time customer discount. </p>
    </div>
      
-     <button>Explore</button>
+   <router-link to="/products"><a class="btn btn-transparent text-light border-dark">Explore</a></router-link>
+
    </div>
    <div>
     <img src="../assets/Images/peep3-fococlipping-standard.png" alt="">
@@ -56,12 +58,13 @@ img {
     margin-left: 50px;
 }
 
-button {
+a {
     background: transparent;
-    padding: 10px 40px 10px 40px;
+    /* padding: 10px 40px 10px 40px; */
+    
 }
 
-button:hover {
+a:hover {
     background-color: #B08968;
 }
 

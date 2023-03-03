@@ -2,14 +2,12 @@ import { createStore } from 'vuex';
 import axios from 'axios';
 const renderURL = "https://usedgoods.onrender.com";
 
-// let {fullname, email, userpassword, userRole,
-//   phonenumber, joinDate } = payload;
-
 export default createStore({
   state: {
     users: null,
     user: null,
     products: null,
+    product: null,
     spinnerStatus: true,
     message: null
   },
@@ -31,6 +29,9 @@ export default createStore({
     },
     setProducts(state, values) {
       state.products = values
+    },
+    setProduct(state, value) {
+      state.product = value
     },
     spinnerStatus(state, newSpinnerStatus) {
       state.spinnerStatus = newSpinnerStatus
@@ -60,16 +61,17 @@ export default createStore({
 
       }
     },
-    async fetchSingleProduct(context){
+    async fetchSingleProduct(context, id){
       context.commit('spinnerStatus', true)
 
-      const res = await axios.get(`${renderURL}/products`);
+      const res = await axios.get(`${renderURL}/products/${id}`);
       const {results, err} = await res.data;
       if(results){
-        context.commit('setProducts', results[0]);
+        context.commit('setProduct', results[0]);
         context.commit('spinnerStatus', false);
       } else {
         context.commit('setMessage', err);
+        context.commit('spinnerStatus', true);
       }
     },
     deleteUser: async (context, id)=> {

@@ -1,7 +1,7 @@
 <template>
-    <footer class="bg-gradient bg-gradient">
+    <footer class="bg-gradient container-fluid">
 
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between container-fluid">
 
              <div class="container text-center">
                 <div class="row">

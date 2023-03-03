@@ -1,21 +1,28 @@
 <template>
-    <div>
+    <div class="">
        <div v-if="spinner">
        <SpinnerComponent/>
       </div>
         <div v-else v-for="id in products" :key="id" class="p-2 m-5 mx-auto loop" data-aos="zoom-in" data-aos-duration="3000">
-
-      <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img :src="id.imgURL" class="img-fluid rounded-start h-100" alt="...">
+          <br><br>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-4">
+                <div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-transparent" style="width: 18rem;">
+  <img :src="id.imgURL" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ id.prodName }}</h5>
+    <h5 class="card-title">{{ id.category }}</h5>
+    <p class="card-text">{{id.prodDescription }}</p>
+    <router-link :to="{name: 'product', params: {id: id.id}}"><a class="btn btn-dark">View Product</a></router-link>
+  </div>
+</div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title" data-aos="zoom-in" data-aos-duration="2000">{{ id.prodName }}</h5>
-        <p class="card-text" data-aos="zoom-in" data-aos-duration="2000">{{ id.prodDescription }}</p>
-        <p class="card-text" data-aos="fade-right" data-aos-duration="3000"><small class="text-muted">{{ id.price }}</small></p>
-      </div>
+  </div>
+</div>
     </div>
   </div>
 </div>
@@ -50,4 +57,8 @@ import SpinnerComponent from "../components/SpinnerComponent.vue"
 </script>
 
 <style scoped>
+
+.loop {
+  display: inline-block;
+}
 </style>
