@@ -4,7 +4,7 @@
       <div class="container">
     <div class="row my-2">
       <div class="col-md col-4">
-           <button class="form-control btn btn-transparent border-dark sortBtn text-center m-auto d-flex" @click="SortByPrice">Price<i class="bi bi-arrow-down-up"></i></button><br>
+           <button class="form-control btn btn-transparent border-dark sortBtn text-center m-auto d-flex " @click="SortByPrice">Price<i class="bi bi-arrow-down-up ps-4`"></i></button><br>
 
       </div>
       <div class="col-md">

@@ -19,8 +19,8 @@
     
     <h2 class="title">User</h2>
     <div class="row table-responsive-md">
-    
-      <table class="table table-hover">
+      <SpinnerComponent v-if="spinner"/>
+      <table v-else class="table table-hover">
         <thead class="bg-gradient">
           <tr>
             <th scope="col">ID</th>
@@ -34,8 +34,8 @@
           </tr>
         </thead>
         <tbody>
-          <SpinnerComponent v-if="spinner"/>
-          <tr v-else v-for="userID in users" :key="userID">
+    
+          <tr v-for="userID in users" :key="userID">
             <td data-title="ID" class="text-white">{{userID.userID}}</td>
             <td data-title="Firstname" class="text-white">{{userID.firstName}}</td>
             <td data-title="Lastname" class="text-white">{{userID.lastName}}</td>
@@ -61,8 +61,8 @@
           </tr>
         </thead>
         <tbody>
-          <SpinnerComponent v-if="spinner"/>
-          <tr v-else v-for="id in products" :key="id">
+     
+          <tr v-for="id in products" :key="id">
             <td data-title="id" class="text-white">{{id.id}}</td>
             <td data-title="Name" class="text-white">{{id.prodName}}</td>
             <td data-title="Image" class="text-white">
@@ -95,9 +95,12 @@ import SpinnerComponent from "../components/SpinnerComponent.vue"
       computed( () => store.state.users);
       const products = 
       computed( () => store.state.products)
+      const spinner = 
+      computed( () => store.getters.spinnerStatus)
       return{
         users,
-        products
+        products,
+        spinner
       }
   }
     }
